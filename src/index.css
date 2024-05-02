@@ -1,0 +1,580 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bebas";
+  src: url("/font/BebasKai.ttf");
+}
+
+:root {
+  --yellowMark: #ffd875;
+  --yellow: #fff3d7;
+  --whiteTransparente: #4d4d4d41;
+  --blackTransparente: #2f2f2f9b;
+  --pink: #ff0073;
+}
+
+html {
+  @apply w-full h-screen xl:text-[0.7vw] xs:text-[3vw] sm:text-[1.5vw] lg:text-[1vw] scroll-smooth;
+}
+body {
+  @apply m-0 p-0 box-content Bebas bg-black;
+  @apply w-full h-full lg:overflow-x-hidden;
+}
+#root {
+  @apply w-full h-full;
+}
+img,
+svg {
+  @apply w-full h-full object-cover;
+}
+.Bebas {
+  font-family: "Bebas", sans-serif;
+}
+.helvetica {
+  font-family: Helvetica, sans-serif;
+}
+.ajusteFuente {
+  @apply tracking-[0.25em];
+}
+.maxW {
+  @apply max-w-[1550px];
+}
+h1 {
+  @apply tracking-[0.25em] text-4xl text-[--yellow];
+}
+h2 {
+  @apply Bebas tracking-[0.25em] text-3xl text-[--yellow];
+}
+p {
+  @apply text-xl;
+}
+
+.flexCenter {
+  @apply flex justify-center items-center;
+}
+.floatcenter {
+  @apply absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%];
+}
+.floatRigth {
+  @apply absolute bottom-6 right-6 translate-y-[-50%] translate-x-[-50%];
+}
+.transition {
+  @apply transition-all ease-in-out duration-[1000ms];
+}
+/*Hamburgesa*/
+.lineBurger {
+  @apply absolute w-full h-1 bg-[--yellow] rounded-full transition-all ease-in-out duration-500;
+}
+.lineBurger1 {
+  @apply top-0;
+}
+.lineBurger2 {
+  @apply top-1/2 translate-y-[-50%];
+}
+.lineBurger3 {
+  @apply bottom-0;
+}
+.active .lineBurger1 {
+  @apply rotate-[45deg] top-2;
+}
+.active .lineBurger2 {
+  @apply absolute top-2 rotate-[-45deg] translate-y-0;
+}
+.active .lineBurger3 {
+  @apply absolute bottom-0 opacity-0 invisible;
+}
+.lineBurger.active {
+  @apply absolute top-0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.videoVimeo {
+  @apply opacity-0 pointer-events-none invisible;
+}
+
+.ObjetoInvisible {
+  @apply opacity-0 invisible pointer-events-none;
+}
+.ObjetoVisible {
+  @apply visible opacity-100 pointer-events-auto;
+}
+
+.vimeo.iconPlay {
+  @apply text-[var(--yellow)] flex items-center justify-center xs:px-4 lg:px-6 min-w-1 w-32 h-12 border-[#ffffff73];
+}
+.vimeo.iconPlay.active {
+  @apply w-12 h-12 p-0;
+}
+.videoVimeo .iconPlay .textocustom {
+  @apply flex items-center justify-center;
+}
+.cajaCards {
+  @apply transition z-10 flex flex-col lg:w-1/2 xs:w-full lg:h-full xs:h-[50%] rounded-3xl;
+}
+
+.slidecards {
+  @apply w-full h-full lg:relative items-center flex flex-col  justify-evenly max-lg:pb-4;
+}
+.cards {
+  @apply transition font-inter h-full lg:w-[122vw] xs:w-[375vw] sm:w-[250vw] relative text-white flex justify-between items-center;
+}
+.cardPadre {
+  @apply w-full h-full inline-block relative;
+}
+.cardSingle {
+  @apply w-full h-full transition-all ease-in-out duration-[600ms] px-8;
+}
+.cajaCard.Effectblur {
+  @apply blur-sm opacity-80;
+}
+.cajaCard.Effectblur.none {
+  @apply opacity-0;
+}
+
+.cajaCard {
+  @apply shadowCard transition rounded-3xl border border-white bg-[#ffffff20] backdrop-blur-xl
+  w-full h-full flex flex-col justify-between items-center lg:py-8 lg:px-14 xs:py-6 xs:px-6;
+}
+.cajaCard input,
+.cajaCard select {
+  @apply min-w-32 h-12 bg-transparent rounded-full inline-block border border-[var(--yellow)] w-full px-3 py-2 mb-4;
+}
+
+.cajaCard select option {
+  @apply text-black;
+}
+
+.titulosForm {
+  @apply text-center my-4 font-inter font-normal w-full;
+}
+
+.shadowCard {
+  box-shadow: 11px 10px 9px 5px #0000008c;
+}
+.disable {
+  @apply opacity-35 pointer-events-none;
+}
+
+.lineas-container {
+  @apply w-full h-full flex justify-between items-center;
+}
+.linea {
+  @apply rounded-lg w-1 h-[15%] bg-black inline-block;
+}
+.player {
+  @apply w-full my-6 contadorPlayer overflow-hidden h-9 px-4 flex items-center justify-between rounded-full bg-[var(--yellow)];
+}
+.player.record {
+  @apply bg-black bg-opacity-30 border border-[--yellow];
+}
+.record .contadorPlayer {
+  @apply text-[--yellow];
+}
+.record .linea {
+  @apply bg-[--yellow];
+}
+.contadorPlayer {
+  @apply text-black font-normal;
+}
+
+/* Animación para que las líneas crezcan y bajen de manera desordenada */
+@keyframes growAndShrink {
+  0% {
+    height: 15%; /* Comienza con altura 0 */
+  }
+  50% {
+    height: 25%; /* Alcanza la altura máxima */
+  }
+  100% {
+    height: 15%; /* Regresa a altura 0 */
+  }
+}
+
+/* Aplica la animación a cada línea con una duración y retardo aleatorios */
+.lineaIgrabando {
+  animation: growAndShrink 2s ease-in-out infinite; /* Duración de la animación y repetición infinita */
+  animation-delay: calc(1s * var(--delay)); /* Retardo aleatorio */
+}
+
+/* Asigna una variable CSS para el retardo aleatorio */
+.lineaIgrabando:nth-child(1) {
+  --delay: 0.5; /* Ajusta el retardo según el número de línea */
+}
+
+.lineaIgrabando:nth-child(2) {
+  --delay: 0.3;
+}
+
+/* Añade más líneas y ajusta el retardo según sea necesario */
+.errors {
+  @apply text-red-400 text-center text-sm;
+}
+/* Estilos para el checkbox */
+.checkbox-container {
+  @apply w-full;
+}
+.cajaCard .checkbox-container .caja {
+  @apply flex w-full justify-between items-center mb-4;
+}
+.cajaCard .checkbox-container input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  min-width: 0.7em !important;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 0.7rem;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: relative;
+}
+
+/* Estilo del checkbox cuando está marcado */
+.cajaCard .checkbox-container input[type="checkbox"]:checked {
+  background-color: #ff0073; /* Cambiar el color de fondo cuando está marcado */
+}
+.cajaCard .checkbox-container input[type="checkbox"]:checked {
+  background-color: #ff0073; /* Cambiar el color de fondo cuando está marcado */
+}
+
+/* Estilos para el pseudo-elemento del checkbox */
+.cajaCard .checkbox-container input[type="checkbox"]::before {
+  content: "";
+
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 0.7rem;
+  background-color: #ffffff50; /* Color del pseudo-elemento */
+  transition: background-color 0.3s ease; /* Transición suave del color */
+}
+
+/* Estilo del pseudo-elemento cuando el checkbox está marcado */
+.cajaCard .checkbox-container input[type="checkbox"]:checked::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  border: 1px solid #ff0073;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 1.1rem;
+  background-color: #ffffff00; /* Color del pseudo-elemento */
+}
+
+.itemnav {
+  @apply relative overflow-hidden transition-all ease-in-out duration-700 h-full lg:w-[15%] xs:w-[32%] bg-black rounded-3xl border border-white;
+}
+.itemnav.active {
+  @apply w-[60%];
+}
+.itemnav.hide {
+  @apply hidden;
+}
+
+.Toltip .line,
+.Toltip .caja {
+  @apply opacity-0 pointer-events-none;
+}
+.Toltip.active .line,
+.Toltip.active .caja {
+  @apply opacity-100;
+}
+.capa {
+  @apply transition w-full h-full fixed left-0 top-0 z-[1] pointer-events-none;
+}
+.activeCapa {
+  @apply transition w-full h-full fixed left-0 top-0 z-[1] bg-black bg-opacity-70;
+}
+
+.punto:before {
+  content: "";
+  animation: puntos 2s ease-in-out infinite;
+  position: absolute;
+  background: #00000042;
+  border-radius: 50px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--yellow);
+  z-index: 1;
+}
+
+.punto:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: var(--yellow);
+  border-radius: 50px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.animateHover:hover .animateHoverElement {
+  animation: promoteRedCircle 1s infinite forwards;
+}
+
+.btn {
+  @apply Bebas flex lg:justify-center xs:justify-evenly items-center transition uppercase bg-black border 
+  hover:bg-[var(--yellow)] hover:text-black border-[var(--yellow)] rounded-full bg-opacity-30 tracking-[0.25em] 
+  text-white lg:min-w-32 xs:min-w-80 h-14 py-2  px-10;
+}
+.btn.active {
+  @apply bg-[--yellow] text-black hover:bg-black hover:text-white hover:bg-opacity-30;
+}
+
+.hoverBtn {
+  @apply text-xl;
+}
+.btn.graciasBtn {
+  @apply min-w-80;
+}
+
+.bgvid {
+  @apply w-full h-full object-cover fixed top-0 left-0 mix-blend-screen z-50 pointer-events-none;
+}
+.cajaTitulos.btn {
+  @apply sm:px-20 xs:px-10;
+}
+.videoVimeo .omitir.btn.active {
+  @apply opacity-100;
+}
+.btn.btnGrabadora {
+  @apply bg-opacity-0 w-full xs:min-w-[19rem];
+}
+.btn.btnGrabadora.noPadding {
+  @apply px-0 mb-4;
+}
+.activebtn {
+  @apply opacity-100 pointer-events-auto;
+}
+
+@keyframes puntos {
+  0% {
+    opacity: 0;
+    width: 80%;
+    height: 80%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
+}
+
+@keyframes promoteRedCircle {
+  0%,
+  to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.navLink {
+  @apply transition-all ease-in-out duration-200 h-[15%] flex items-center;
+}
+.navLink a {
+  @apply Bebas tracking-[0.2em] transition-all ease-in-out duration-500 text-[--yellow] w-full h-full flex items-center font-inter font-normal text-4xl;
+}
+.navLink a:hover {
+  @apply text-[--yellowMark];
+
+  transform: scale(1.1);
+}
+
+.navLink:hover a::before,
+.navLink:hover a::after {
+  opacity: 1;
+  transform: rotate(-90deg);
+}
+.navLink a::before {
+  transition: all ease-in-out 0.5s;
+  opacity: 0;
+  content: "";
+  margin: 1rem;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background-image: url("/svg/estrella-hover.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.navLink a::after {
+  transition: all ease-in-out 0.5s;
+  opacity: 0;
+  content: "";
+  margin: 1rem;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background-image: url("/svg/estrella-hover.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Estilo para la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 5px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilo para el riel de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Color de fondo del riel */
+}
+
+/* Estilo para el pulgar (la parte móvil) de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+  background-color: var(--pink); /* Color del pulgar */
+}
+/* Estilo para la barra de desplazamiento en Firefox */
+/* Nota: Esto solo funciona en Firefox 64+ */
+* {
+  scrollbar-color: var(--pink) #000; /* Color del pulgar y del riel */
+  scrollbar-width: thin; /* Ancho de la barra de desplazamiento */
+}
+
+.textoStock {
+  @apply 2xl:translate-x-[3%];
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 6px solid transparent;
+  border-top-color: var(
+    --pink
+  ); /* Cambia el color del borde según lo necesites */
+  border-left-color: var(
+    --pink
+  ); /* Cambia el color del borde según lo necesites */
+  border-bottom-color: var(
+    --pink
+  ); /* Cambia el color del borde según lo necesites */
+  border-radius: 50%;
+  animation: spin 1s linear infinite; /* Definir la animación */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gradiente {
+  background: linear-gradient(0deg, #000000 0%, #00000012 44.12%);
+}
+
+.textNimate {
+  @apply opacity-0;
+}
+.lottie,
+.marco {
+  @apply opacity-0;
+}
+
+.soldier path {
+  animation: draw 1.5s forwards;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+@keyframes draw {
+  from {
+    stroke-dasharray: 0, 100;
+  }
+  to {
+    stroke-dasharray: 100, 0;
+  }
+}
+
+.line {
+  @apply h-[1px] w-4/12 bg-[--yellow];
+}
+
+.Oprime {
+  @apply opacity-0 pointer-events-none absolute top-1/2 lg:-translate-y-[80%] xs:-translate-y-[50%] xs:left-[10%] lg:left-[20%] 
+  lg:text-xs xs:text-xl
+  lg:w-80 xs:w-48;
+}
+
+.iconSocial {
+  @apply transition;
+}
+.iconSocial path {
+  @apply transition;
+
+  fill: #ffffff00;
+  stroke-width: "2px";
+}
+.iconSocial:hover path {
+  fill: var(--yellow);
+  stroke-width: 0;
+}
+
+.iconSocial2 {
+  @apply transition;
+}
+.iconSocial2 .Xicon .borde1 {
+  @apply transition;
+  fill: #ffffff00;
+}
+.iconSocial2 .Xicon .border3 {
+  @apply transition;
+  fill: var(--yellow);
+}
+.iconSocial2:hover .Xicon .border3 {
+  fill: #002433;
+}
+.iconSocial2:hover .Xicon .borde1 {
+  fill: var(--yellow);
+}
+.iconSocial3 {
+  @apply transition;
+}
+.iconSocial3 .whtIcon .border1 {
+  @apply transition;
+  fill: #ffffff00;
+}
+.iconSocial3 .whtIcon .border2 {
+  @apply transition;
+  fill: #ffffff00;
+}
+.iconSocial3:hover .whtIcon .border1 {
+  fill: var(--yellow);
+}
+
+.iconSocial3 .whtIcon .border3 {
+  @apply transition;
+  fill: var(--yellow);
+}
+.iconSocial3:hover .whtIcon .border3 {
+  fill: #002433;
+}
